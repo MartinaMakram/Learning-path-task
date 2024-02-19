@@ -105,18 +105,9 @@
 </template>
 
 <script setup lang="ts">
-import useAuth from '~/store/auth'
 
-const { logout } = useAuth()
-
-const handleLogout = async () => {
-  try {
-    let token = localStorage.getItem('token')
+const handleLogout = () => {
     localStorage.clear()
-    await logout(token as string)
-  } catch (error) {
-    console.log('Error Logging out from Sidebar component:', error)
-  }
 }
 </script>
 

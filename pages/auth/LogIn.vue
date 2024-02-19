@@ -1,8 +1,6 @@
 <template>
   <div class="flex items-center justify-center h-[500px] lg:h-[700px]">
-    <div
-      class="flex-col justify-center items-center mt-4 lg:w-[529px] lg:mx-auto lg:h-[554px]"
-    >
+    <div class="flex-col justify-center items-center mt-4 lg:w-[529px] lg:mx-auto lg:h-[554px]">
       <h1 class="font-lato font-bold text-2xl text-center leading-6">
         Sign In
       </h1>
@@ -30,23 +28,10 @@
         />
       </div>
 
-      <NuxtLink to="#" class="text-[#00ABEB] flex justify-end px-5 py-2"
-        >Forgot Password?</NuxtLink
-      >
-      <p
-        v-if="errorMessage"
-        class="text-red-700 mt-4 text-center text-sm lg:text-lg"
-      >
-        {{ errorMessage }}
-      </p>
+      <NuxtLink to="#" class="text-[#00ABEB] flex justify-end px-5 py-2">Forgot Password?</NuxtLink>
+      <p v-if="errorMessage" class="text-red-700 mt-4 text-center text-sm lg:text-lg">{{ errorMessage }}</p>
       <div class="px-5">
-        <button
-          @click="submitLoginForm"
-          id="sign-in-btn"
-          class="flex justify-center items-center bg-[#00ABEB] text-white p-2 w-full h-[45px] rounded-md"
-        >
-          Sign In
-        </button>
+        <button @click="submitLoginForm" id="sign-in-btn" class="flex justify-center items-center bg-[#00ABEB] text-white p-2 w-full h-[45px] rounded-md">Sign In</button>
       </div>
 
       <p class="px-2 mt-[12px] text-[13px] text-[#666] text-center lg:p-6">
@@ -66,11 +51,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import useAuth from '~/store/auth'
-
-definePageMeta({
-  middleware: 'auth',
-})
+import { useRouter } from 'vue-router'
 
 const { login, isAuthenticated } = useAuth()
 const router = useRouter()
@@ -105,6 +88,6 @@ const validateEmail = () => {
     emailError.value = 'Please enter a valid email.'
   } else {
     emailError.value = ''
-  }
+  } 
 }
 </script>
